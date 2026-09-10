@@ -1,0 +1,38 @@
+name: Deploy to kakomass.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Most shared hosts support explicit FTPS (encrypted control+data
+          # channel over plain FTP's port). If this fails to connect, ask
+          # your host whether FTPS is supported, or change this to "ftp".
+          protocol: ftps
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Never delete files on the server that aren't in this repo —
+          # in particular, this protects the live data/kakoma.sqlite
+          # database (which lives only on the server, never in git) from
+          # ever being wiped by a deploy.
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            data/**
+            README.md
+            CLAUDE.md
