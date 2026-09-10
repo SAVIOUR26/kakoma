@@ -1,0 +1,11 @@
+# Kakoma S.S. — Apache config for shared hosting deployments.
+
+# Pretty error pages
+ErrorDocument 404 /404.php
+
+# Never allow directory listings
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
