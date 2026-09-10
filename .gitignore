@@ -1,0 +1,11 @@
+# Runtime database (auto-created & seeded on first request)
+/data/*.sqlite
+/data/*.sqlite-journal
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local env overrides
+.env
