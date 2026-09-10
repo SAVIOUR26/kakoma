@@ -7,7 +7,7 @@ $db = get_db();
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM events WHERE id = :id')->execute([':id' => (int) $_GET['delete']]);
     flash_set('admin_success', 'Event deleted.');
-    header('Location: events.php');
+    header('Location: /admin/events');
     exit;
 }
 
@@ -17,21 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description'] ?? '');
     $eventDate = trim($_POST['event_date'] ?? '');
     $status = in_array($_POST['status'] ?? '', ['upcoming', 'coming_soon', 'past'], true) ? $_POST['status'] : 'upcoming';
+    $detailsHtml = trim($_POST['details_html'] ?? '');
 
     if ($title !== '') {
         if ($id) {
-            $db->prepare('UPDATE events SET title=:t, description=:d, event_date=:e, status=:s WHERE id=:id')
-                ->execute([':t' => $title, ':d' => $description, ':e' => $eventDate ?: null, ':s' => $status, ':id' => $id]);
+            $db->prepare('UPDATE events SET title=:t, description=:d, event_date=:e, status=:s, details_html=:dh WHERE id=:id')
+                ->execute([':t' => $title, ':d' => $description, ':e' => $eventDate ?: null, ':s' => $status, ':dh' => $detailsHtml ?: null, ':id' => $id]);
             flash_set('admin_success', 'Event updated.');
         } else {
-            $db->prepare('INSERT INTO events (title, description, event_date, status) VALUES (:t, :d, :e, :s)')
-                ->execute([':t' => $title, ':d' => $description, ':e' => $eventDate ?: null, ':s' => $status]);
+            $db->prepare('INSERT INTO events (title, description, event_date, status, details_html) VALUES (:t, :d, :e, :s, :dh)')
+                ->execute([':t' => $title, ':d' => $description, ':e' => $eventDate ?: null, ':s' => $status, ':dh' => $detailsHtml ?: null]);
             flash_set('admin_success', 'Event added.');
         }
     } else {
         flash_set('admin_error', 'Title is required.');
     }
-    header('Location: events.php');
+    header('Location: /admin/events');
     exit;
 }
 
@@ -76,8 +77,13 @@ require __DIR__ . '/includes/layout-header.php';
                 </select>
             </div>
         </div>
+        <div class="field">
+            <label for="details_html">Extra Details (HTML, optional — ticket tiers, payment info, RSVP contacts)</label>
+            <textarea id="details_html" name="details_html" style="min-height:140px; font-family:monospace;"><?= h($editEvent['details_html'] ?? '') ?></textarea>
+            <p class="form-note">Wrap ticket lists in <code>&lt;table class="simple-table"&gt;</code> and contact lists in <code>&lt;ul&gt;</code> to match the site's styling.</p>
+        </div>
         <button type="submit" class="btn btn-navy"><?= $editEvent ? 'Update Event' : 'Add Event' ?></button>
-        <?php if ($editEvent): ?><a href="events.php" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy);">Cancel</a><?php endif; ?>
+        <?php if ($editEvent): ?><a href="/admin/events" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy);">Cancel</a><?php endif; ?>
     </form>
 </div>
 
@@ -91,8 +97,8 @@ require __DIR__ . '/includes/layout-header.php';
                     <td><?= h(format_date($event['event_date'])) ?></td>
                     <td><?= h(ucwords(str_replace('_', ' ', $event['status']))) ?></td>
                     <td class="action-links">
-                        <a href="events.php?edit=<?= (int) $event['id'] ?>">Edit</a>
-                        <a href="events.php?delete=<?= (int) $event['id'] ?>" class="danger" onclick="return confirm('Delete this event?');">Delete</a>
+                        <a href="/admin/events?edit=<?= (int) $event['id'] ?>">Edit</a>
+                        <a href="/admin/events?delete=<?= (int) $event['id'] ?>" class="danger" onclick="return confirm('Delete this event?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

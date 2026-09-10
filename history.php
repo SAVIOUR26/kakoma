@@ -45,9 +45,9 @@ require __DIR__ . '/includes/header.php';
         <p>
             Over six decades, Kakoma has grown through several distinct eras — from its
             founding years, through decades of expansion and academic growth, to today's
-            Diamond Jubilee generation led by a Head Teacher who is himself a Kakoma old
-            student. A detailed era-by-era account, drawing on alumni testimonies and
-            school records, will be added here.
+            Diamond Jubilee generation under Head Teacher Bbale David. A detailed
+            era-by-era account, drawing on alumni testimonies and school records, will
+            be added here.
         </p>
 
         <h2>Labour for Success</h2>
@@ -60,8 +60,8 @@ require __DIR__ . '/includes/header.php';
 
         <p class="form-note">
             Have historical photos, documents, or memories to contribute to this page?
-            <a href="contact.php">Get in touch</a> — or if you're an old student,
-            <a href="alumni.php#register">register in our Old Students directory</a>.
+            <a href="/contact">Get in touch</a> — or if you're an old student,
+            <a href="/alumni#register">register in our Old Students directory</a>.
         </p>
     </div>
 </section>

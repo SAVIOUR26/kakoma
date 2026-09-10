@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
         </p>
         <p class="muted">
             To make a contribution or pledge in the meantime, please
-            <a href="contact.php">get in touch with the school</a>.
+            <a href="/contact">get in touch with the school</a>.
         </p>
     </div>
 </section>

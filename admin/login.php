@@ -2,7 +2,7 @@
 require __DIR__ . '/includes/bootstrap.php';
 
 if (is_admin_logged_in()) {
-    header('Location: index.php');
+    header('Location: /admin/');
     exit;
 }
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id(true);
         $_SESSION['admin_id'] = $user['id'];
         $_SESSION['admin_username'] = $user['username'];
-        header('Location: index.php');
+        header('Location: /admin/');
         exit;
     }
     $error = 'Incorrect username or password.';
@@ -32,14 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Login | Kakoma S.S.</title>
-<link rel="icon" href="../assets/logo/kakoma-crest.jpg">
+<link rel="icon" href="../assets/logo/kakoma-crest.png">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body class="admin-body">
 <div class="login-wrap">
     <div class="login-box">
-        <img src="../assets/logo/kakoma-crest.jpg" alt="Kakoma crest">
+        <img src="../assets/logo/kakoma-crest.png" alt="Kakoma crest">
         <h2 class="mt-0">Kakoma Admin</h2>
         <p class="muted">Sign in to manage site content.</p>
         <?php if ($error): ?><div class="alert alert-error"><?= h($error) ?></div><?php endif; ?>

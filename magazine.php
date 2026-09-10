@@ -37,15 +37,15 @@ require __DIR__ . '/includes/header.php';
                         digital editions. Once ready, it will appear here as a page-flip
                         reader you can browse right in your browser — no download needed.
                     </p>
-                    <p class="form-note">Want to know the moment it's live? <a href="contact.php">Contact us</a> or follow our <a href="blog.php">blog</a>.</p>
+                    <p class="form-note">Want to know the moment it's live? <a href="/contact">Contact us</a> or follow our <a href="/blog">blog</a>.</p>
                 </div>
             <?php endif; ?>
         </div>
 
         <div class="social-share text-center" style="justify-content:center;">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(SITE_URL . '/magazine.php') ?>" target="_blank" rel="noopener">Share on Facebook</a>
-            <a href="https://twitter.com/intent/tweet?url=<?= urlencode(SITE_URL . '/magazine.php') ?>&text=<?= urlencode('Check out the Kakoma S.S. Diamond Jubilee magazine') ?>" target="_blank" rel="noopener">Share on X</a>
-            <a href="https://wa.me/?text=<?= urlencode('Check out the Kakoma S.S. Diamond Jubilee magazine: ' . SITE_URL . '/magazine.php') ?>" target="_blank" rel="noopener">Share on WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(SITE_URL . '/magazine') ?>" target="_blank" rel="noopener">Share on Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=<?= urlencode(SITE_URL . '/magazine') ?>&text=<?= urlencode('Check out the Kakoma S.S. Diamond Jubilee magazine') ?>" target="_blank" rel="noopener">Share on X</a>
+            <a href="https://wa.me/?text=<?= urlencode('Check out the Kakoma S.S. Diamond Jubilee magazine: ' . SITE_URL . '/magazine') ?>" target="_blank" rel="noopener">Share on WhatsApp</a>
         </div>
     </div>
 </section>

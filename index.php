@@ -5,7 +5,7 @@ require __DIR__ . '/includes/db.php';
 
 $db = get_db();
 $latestPosts = $db->query('SELECT * FROM posts WHERE published = 1 ORDER BY published_at DESC LIMIT 3')->fetchAll();
-$nextEvent = $db->query("SELECT * FROM events ORDER BY event_date ASC LIMIT 1")->fetch();
+$nextEvent = $db->query("SELECT * FROM events WHERE status != 'past' ORDER BY event_date ASC LIMIT 1")->fetch();
 
 $page_title = 'Home';
 $page_description = 'Official website of Kakoma Secondary School, Rakai District, Uganda — celebrating 60 years of Labour for Success.';
@@ -13,8 +13,21 @@ $body_class = 'page-home';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="hero">
-    <div class="container">
+<section class="hero hero--slideshow">
+    <div class="hero-slideshow" aria-hidden="true">
+        <?php
+        $heroSlides = [
+            'assets/photos/dinner/fundraising-group-photo.jpg',
+            'assets/photos/dinner/jubilee-hall-project-unveiling.jpg',
+            'assets/photos/dinner/chairman-isaac-nsereko.jpg',
+            'assets/photos/dinner/jubilee-hall-project-presentation.jpg',
+        ];
+        foreach ($heroSlides as $i => $slide): ?>
+            <div class="hero-slide<?= $i === 0 ? ' is-active' : '' ?>" style="background-image:url('<?= h($slide) ?>')"></div>
+        <?php endforeach; ?>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
         <span class="eyebrow">Diamond Jubilee &middot; 1967 &ndash; 2026</span>
         <h1>Kakoma at 60: Labour for Success</h1>
         <p class="lead">
@@ -31,8 +44,8 @@ require __DIR__ . '/includes/header.php';
         </div>
 
         <div class="hero-actions">
-            <a href="magazine.php" class="btn btn-gold">Read the Digital Magazine</a>
-            <a href="anniversary.php" class="btn btn-outline">Explore Kakoma at 60</a>
+            <a href="/magazine" class="btn btn-gold">Read the Digital Magazine</a>
+            <a href="/anniversary" class="btn btn-outline">Explore Kakoma at 60</a>
         </div>
     </div>
 </section>
@@ -51,15 +64,15 @@ require __DIR__ . '/includes/header.php';
 <section>
     <div class="container">
         <div class="section-header">
-            <span class="eyebrow">From Student to Headteacher</span>
-            <h2>A School Led by Its Own</h2>
-            <p class="muted">Our current Head Teacher, Bbale David, is himself a Kakoma old student — a living example of what "Labour for Success" builds over a lifetime.</p>
+            <span class="eyebrow">Leading Into the Diamond Jubilee</span>
+            <h2>A Message From Our Head Teacher</h2>
+            <p class="muted">Head Teacher Bbale David shares his vision for Kakoma Secondary School as we mark 60 years of Labour for Success.</p>
         </div>
         <div class="grid grid-2" style="align-items:center;">
             <img src="assets/photos/dinner/headteacher-bbale-david.jpg" alt="Head Teacher Bbale David speaking at the Diamond Jubilee celebration" style="border-radius:var(--radius); box-shadow:var(--shadow);">
             <div>
-                <p>Bbale David walked these same corridors as a student before returning to lead the school into its Diamond Jubilee decade. Read his message to the Kakoma family as we mark 60 years.</p>
-                <a href="headteacher-message.php" class="btn btn-navy">Read the Head Teacher's Message</a>
+                <p>From steady academic leadership to the momentum behind the Diamond Jubilee Hall Project, read the Head Teacher's message to the Kakoma family as we mark 60 years.</p>
+                <a href="/headteacher-message" class="btn btn-navy">Read the Head Teacher's Message</a>
             </div>
         </div>
     </div>
@@ -68,10 +81,11 @@ require __DIR__ . '/includes/header.php';
 <?php if ($nextEvent): ?>
 <section class="section-navy">
     <div class="container text-center">
-        <span class="coming-soon-badge">Coming Soon</span>
+        <span class="coming-soon-badge"><?= $nextEvent['status'] === 'coming_soon' ? 'Coming Soon' : 'Upcoming' ?></span>
+        <span class="card__meta" style="color:rgba(255,255,255,0.7); display:block; margin-top:10px;"><?= h(format_date($nextEvent['event_date'])) ?></span>
         <h2><?= h($nextEvent['title']) ?></h2>
         <p style="max-width:600px;margin:0 auto 20px;color:rgba(255,255,255,0.85);"><?= h($nextEvent['description']) ?></p>
-        <a href="events.php" class="btn btn-gold">See All Events</a>
+        <a href="/events" class="btn btn-gold">See Tickets &amp; All Events</a>
     </div>
 </section>
 <?php endif; ?>
@@ -92,7 +106,7 @@ require __DIR__ . '/includes/header.php';
                         <span class="card__meta"><?= h(format_date($post['published_at'])) ?></span>
                         <h3><?= h($post['title']) ?></h3>
                         <p><?= h($post['excerpt']) ?></p>
-                        <a class="read-more" href="blog-post.php?slug=<?= urlencode($post['slug']) ?>">Read more &rarr;</a>
+                        <a class="read-more" href="/blog-post?slug=<?= urlencode($post['slug']) ?>">Read more &rarr;</a>
                     </div>
                 </article>
             <?php endforeach; ?>
@@ -107,7 +121,7 @@ require __DIR__ . '/includes/header.php';
             <h2>60 Pages Marking 60 Years</h2>
             <p class="muted">Our Diamond Jubilee magazine — print and digital editions — tells the Kakoma story in full. Read it online, anytime, anywhere.</p>
         </div>
-        <a href="magazine.php" class="btn btn-gold">Open the Digital Magazine</a>
+        <a href="/magazine" class="btn btn-gold">Open the Digital Magazine</a>
     </div>
 </section>
 

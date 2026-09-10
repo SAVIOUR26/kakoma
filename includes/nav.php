@@ -1,8 +1,8 @@
 <?php $current = current_page(); ?>
 <header class="site-header">
     <div class="site-header__inner">
-        <a href="index.php" class="brand">
-            <img src="assets/logo/kakoma-crest.jpg" alt="Kakoma S.S. crest" class="brand__crest">
+        <a href="/" class="brand">
+            <img src="assets/logo/kakoma-crest.png" alt="Kakoma S.S. crest" class="brand__crest">
             <span class="brand__text">
                 <span class="brand__name">Kakoma Secondary School</span>
                 <span class="brand__motto"><?= h(SITE_MOTTO) ?></span>
@@ -17,7 +17,7 @@
             <ul>
                 <?php foreach ($GLOBALS['NAV_ITEMS'] as $item): ?>
                     <li>
-                        <a href="<?= h($item['href']) ?>" class="<?= $current === $item['href'] ? 'is-active' : '' ?>">
+                        <a href="<?= h($item['href']) ?>" class="<?= $current === $item['page'] ? 'is-active' : '' ?>">
                             <?= h($item['label']) ?>
                         </a>
                     </li>

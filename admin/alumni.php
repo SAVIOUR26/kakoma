@@ -7,29 +7,29 @@ $db = get_db();
 if (isset($_GET['approve'])) {
     $db->prepare('UPDATE alumni SET approved = 1 WHERE id = :id')->execute([':id' => (int) $_GET['approve']]);
     flash_set('admin_success', 'Old student approved and now visible on the site.');
-    header('Location: alumni.php');
+    header('Location: /admin/alumni');
     exit;
 }
 if (isset($_GET['unapprove'])) {
     $db->prepare('UPDATE alumni SET approved = 0 WHERE id = :id')->execute([':id' => (int) $_GET['unapprove']]);
     flash_set('admin_success', 'Old student hidden from the site.');
-    header('Location: alumni.php');
+    header('Location: /admin/alumni');
     exit;
 }
 if (isset($_GET['feature'])) {
     $db->prepare('UPDATE alumni SET featured = 1 WHERE id = :id')->execute([':id' => (int) $_GET['feature']]);
-    header('Location: alumni.php');
+    header('Location: /admin/alumni');
     exit;
 }
 if (isset($_GET['unfeature'])) {
     $db->prepare('UPDATE alumni SET featured = 0 WHERE id = :id')->execute([':id' => (int) $_GET['unfeature']]);
-    header('Location: alumni.php');
+    header('Location: /admin/alumni');
     exit;
 }
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM alumni WHERE id = :id')->execute([':id' => (int) $_GET['delete']]);
     flash_set('admin_success', 'Old student record deleted.');
-    header('Location: alumni.php');
+    header('Location: /admin/alumni');
     exit;
 }
 
@@ -56,16 +56,16 @@ require __DIR__ . '/includes/layout-header.php';
                     </td>
                     <td class="action-links">
                         <?php if (!$alum['approved']): ?>
-                            <a href="alumni.php?approve=<?= (int) $alum['id'] ?>">Approve</a>
+                            <a href="/admin/alumni?approve=<?= (int) $alum['id'] ?>">Approve</a>
                         <?php else: ?>
-                            <a href="alumni.php?unapprove=<?= (int) $alum['id'] ?>">Unapprove</a>
+                            <a href="/admin/alumni?unapprove=<?= (int) $alum['id'] ?>">Unapprove</a>
                             <?php if ($alum['featured']): ?>
-                                <a href="alumni.php?unfeature=<?= (int) $alum['id'] ?>">Unfeature</a>
+                                <a href="/admin/alumni?unfeature=<?= (int) $alum['id'] ?>">Unfeature</a>
                             <?php else: ?>
-                                <a href="alumni.php?feature=<?= (int) $alum['id'] ?>">Feature</a>
+                                <a href="/admin/alumni?feature=<?= (int) $alum['id'] ?>">Feature</a>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <a href="alumni.php?delete=<?= (int) $alum['id'] ?>" class="danger" onclick="return confirm('Delete this record?');">Delete</a>
+                        <a href="/admin/alumni?delete=<?= (int) $alum['id'] ?>" class="danger" onclick="return confirm('Delete this record?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

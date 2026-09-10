@@ -31,5 +31,8 @@ function get_db(): PDO
         seed_database($db);
     }
 
+    require_once BASE_PATH . '/database/migrations.php';
+    run_migrations($db);
+
     return $db;
 }

@@ -4,7 +4,7 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: elearning.php');
+    header('Location: /elearning');
     exit;
 }
 
@@ -14,13 +14,13 @@ $phone = trim($_POST['phone'] ?? '');
 
 if ($email === '' && $phone === '') {
     flash_set('elearning_error', 'Please provide at least an email or phone number so we can notify you.');
-    header('Location: elearning.php');
+    header('Location: /elearning');
     exit;
 }
 
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     flash_set('elearning_error', 'That email address doesn\'t look right — please check and try again.');
-    header('Location: elearning.php');
+    header('Location: /elearning');
     exit;
 }
 
@@ -31,5 +31,5 @@ $stmt = $db->prepare(
 $stmt->execute([':name' => $name ?: null, ':email' => $email ?: null, ':phone' => $phone ?: null]);
 
 flash_set('elearning_success', "Thanks! We'll let you know as soon as e-learning launches.");
-header('Location: elearning.php');
+header('Location: /elearning');
 exit;

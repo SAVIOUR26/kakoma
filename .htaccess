@@ -1,7 +1,6 @@
 # Kakoma S.S. — Apache config for shared hosting deployments.
 
-# Pretty error pages
-ErrorDocument 404 /404.php
+DirectoryIndex index.php
 
 # Never allow directory listings
 Options -Indexes
@@ -9,3 +8,27 @@ Options -Indexes
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
 </IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Canonicalize: index.php / index -> site root
+    RewriteCond %{THE_REQUEST} \s/+(admin/)?index(\.php)?[?\s] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Canonicalize: redirect any other explicit ".php" URL to its
+    # extensionless equivalent, so links/bookmarks always converge on one
+    # canonical clean URL.
+    RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.php[?\s] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Serve the matching .php file for a clean URL, without changing what
+    # the browser shows. Skipped for real files/directories (assets, etc.)
+    # and for anything already containing a dot (e.g. style.css).
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^([^.]+)$ $1.php [NC,L]
+</IfModule>
+
+ErrorDocument 404 /404

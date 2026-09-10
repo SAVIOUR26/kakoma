@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <h1 style="font-size:4rem;">404</h1>
         <p class="muted">Sorry, we couldn't find that page.</p>
-        <a href="index.php" class="btn btn-navy">Back to Home</a>
+        <a href="/" class="btn btn-navy">Back to Home</a>
     </div>
 </section>
 
