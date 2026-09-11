@@ -8,11 +8,34 @@
  * remove an already-shipped one.
  */
 
+/**
+ * schema.sql uses CREATE TABLE IF NOT EXISTS, which does nothing to a
+ * table that already exists on a live site — it does NOT retrofit new
+ * columns. Any migration that relies on a column added after a table's
+ * first release must add it first, via this helper.
+ */
+function column_exists(PDO $db, string $table, string $column): bool
+{
+    $stmt = $db->query('PRAGMA table_info(' . $table . ')');
+    foreach ($stmt->fetchAll() as $row) {
+        if ($row['name'] === $column) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function run_migrations(PDO $db): void
 {
     $applied = $db->query('SELECT name FROM migrations')->fetchAll(PDO::FETCH_COLUMN);
 
     $migrations = [
+        '2026_09_10_add_events_details_html_column' => function (PDO $db) {
+            if (!column_exists($db, 'events', 'details_html')) {
+                $db->exec('ALTER TABLE events ADD COLUMN details_html TEXT');
+            }
+        },
+
         '2026_09_10_remove_headteacher_old_student_claim' => function (PDO $db) {
             $db->prepare(
                 "UPDATE gallery_images SET caption = 'Head Teacher Bbale David speaks at the fundraising dinner.'
