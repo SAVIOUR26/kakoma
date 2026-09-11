@@ -20,12 +20,12 @@ $page_description = $post['excerpt'];
 $body_class = 'page-blog-post';
 require __DIR__ . '/includes/header.php';
 
-$shareUrl = SITE_URL . '/blog-post.php?slug=' . urlencode($post['slug']);
+$shareUrl = SITE_URL . '/blog-post?slug=' . urlencode($post['slug']);
 ?>
 
 <section class="page-header">
     <div class="container">
-        <div class="breadcrumb"><a href="blog.php">&larr; Back to Blog</a></div>
+        <div class="breadcrumb"><a href="/blog">&larr; Back to Blog</a></div>
         <h1><?= h($post['title']) ?></h1>
         <p><?= h(format_date($post['published_at'])) ?></p>
     </div>

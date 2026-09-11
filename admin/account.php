@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ->execute([':h' => password_hash($new, PASSWORD_DEFAULT), ':id' => $user['id']]);
         flash_set('admin_success', 'Password updated successfully.');
     }
-    header('Location: account.php');
+    header('Location: /admin/account');
     exit;
 }
 

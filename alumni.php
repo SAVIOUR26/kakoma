@@ -55,7 +55,7 @@ $error = flash_get('alumni_error');
             <p class="text-center muted">
                 Testimonies from our Old Students' fundraising dinner and Rakai field trip
                 are being compiled and will appear here shortly. Meanwhile, see photos from
-                the dinner in our <a href="gallery.php">gallery</a>, or add your own story
+                the dinner in our <a href="/gallery">gallery</a>, or add your own story
                 using the form below.
             </p>
         <?php endif; ?>
@@ -74,7 +74,7 @@ $error = flash_get('alumni_error');
             <?php if ($success): ?><div class="alert alert-success"><?= h($success) ?></div><?php endif; ?>
             <?php if ($error): ?><div class="alert alert-error"><?= h($error) ?></div><?php endif; ?>
 
-            <form action="alumni-register.php" method="post">
+            <form action="/alumni-register" method="post">
                 <div class="field">
                     <label for="full_name">Full Name *</label>
                     <input type="text" id="full_name" name="full_name" required>

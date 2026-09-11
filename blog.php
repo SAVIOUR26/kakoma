@@ -32,7 +32,7 @@ require __DIR__ . '/includes/header.php';
                             <span class="card__meta"><?= h(format_date($post['published_at'])) ?></span>
                             <h3><?= h($post['title']) ?></h3>
                             <p><?= h($post['excerpt']) ?></p>
-                            <a class="read-more" href="blog-post.php?slug=<?= urlencode($post['slug']) ?>">Read more &rarr;</a>
+                            <a class="read-more" href="/blog-post?slug=<?= urlencode($post['slug']) ?>">Read more &rarr;</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

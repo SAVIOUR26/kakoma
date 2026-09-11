@@ -7,7 +7,7 @@ $db = get_db();
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM posts WHERE id = :id')->execute([':id' => (int) $_GET['delete']]);
     flash_set('admin_success', 'Post deleted.');
-    header('Location: posts.php');
+    header('Location: /admin/posts');
     exit;
 }
 
@@ -18,7 +18,7 @@ $active = 'posts';
 require __DIR__ . '/includes/layout-header.php';
 ?>
 
-<p style="margin-bottom:18px;"><a href="post-edit.php" class="btn btn-navy">+ New Post</a></p>
+<p style="margin-bottom:18px;"><a href="/admin/post-edit" class="btn btn-navy">+ New Post</a></p>
 
 <div class="admin-card">
     <table class="admin-table">
@@ -38,9 +38,9 @@ require __DIR__ . '/includes/layout-header.php';
                         <?php endif; ?>
                     </td>
                     <td class="action-links">
-                        <a href="post-edit.php?id=<?= (int) $post['id'] ?>">Edit</a>
-                        <a href="../blog-post.php?slug=<?= urlencode($post['slug']) ?>" target="_blank">View</a>
-                        <a href="posts.php?delete=<?= (int) $post['id'] ?>" class="danger" onclick="return confirm('Delete this post?');">Delete</a>
+                        <a href="/admin/post-edit?id=<?= (int) $post['id'] ?>">Edit</a>
+                        <a href="/blog-post?slug=<?= urlencode($post['slug']) ?>" target="_blank">View</a>
+                        <a href="/admin/posts?delete=<?= (int) $post['id'] ?>" class="danger" onclick="return confirm('Delete this post?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

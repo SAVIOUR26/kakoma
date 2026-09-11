@@ -11,7 +11,7 @@ if ($id) {
     $post = $stmt->fetch();
     if (!$post) {
         flash_set('admin_error', 'Post not found.');
-        header('Location: posts.php');
+        header('Location: /admin/posts');
         exit;
     }
 }
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
             flash_set('admin_success', 'Post created.');
         }
-        header('Location: posts.php');
+        header('Location: /admin/posts');
         exit;
     }
 }
@@ -113,7 +113,7 @@ require __DIR__ . '/includes/layout-header.php';
             </label>
         </div>
         <button type="submit" class="btn btn-navy">Save Post</button>
-        <a href="posts.php" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy);">Cancel</a>
+        <a href="/admin/posts" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy);">Cancel</a>
     </form>
 </div>
 

@@ -26,11 +26,12 @@ function seed_database(PDO $db): void
     )->execute([
         ':slug' => 'old-students-fundraising-dinner-2026',
         ':title' => "Old Students Rally Behind the Diamond Jubilee Hall Project",
-        ':excerpt' => "On 15 August 2026, old students, board members and staff gathered for a fundraising dinner in support of the Diamond Jubilee Hall Project — a new milestone as Kakoma S.S. approaches its 60th anniversary.",
-        ':body' => "<p>On <strong>15 August 2026</strong>, old students, board members and friends of Kakoma Secondary School came together for an evening fundraising dinner in support of the <strong>Diamond Jubilee Hall Project</strong> — a new hall for the school, timed to mark our 60th anniversary on 14 November 2026.</p>"
-            . "<p>Board Chairman <strong>Dr. Isaac Nsereko</strong> welcomed guests and thanked old students for continuing to \"labour for success\" long after leaving Kakoma's gates. Head Teacher <strong>Bbale David</strong> — himself a Kakoma old student — spoke about what it means to now lead the school that shaped him, and shared the Board's vision for the Jubilee Hall.</p>"
+        ':excerpt' => "On 15 August 2026, old students, board members and staff gathered at Royal Suites, Bugolobi for a fundraising dinner in support of the Diamond Jubilee Hall Project — a new milestone as Kakoma S.S. approaches its 60th anniversary.",
+        ':body' => "<p>On <strong>15 August 2026</strong>, old students, board members and friends of Kakoma Secondary School came together at <strong>Royal Suites, Bugolobi</strong> for an evening fundraising dinner in support of the <strong>Diamond Jubilee Hall Project</strong> — a new hall for the school, timed to mark our 60th anniversary on 14 November 2026.</p>"
+            . "<p>Board Chairman <strong>Dr. Isaac Nsereko</strong> welcomed guests and thanked old students for continuing to \"labour for success\" long after leaving Kakoma's gates. Head Teacher <strong>Bbale David</strong> spoke about the Board's vision for the Jubilee Hall and thanked old students for their generosity.</p>"
             . "<p>The evening's highlight was the unveiling of the Diamond Jubilee Hall Project board: a visual journey \"from where we are\" — the school's current, aging facilities — \"to where we want to be\" — a modern hall pictured in architectural renders. Old students, including a guest from the Class of 1968, shared memories from their own years at Kakoma before pledging their support.</p>"
-            . "<p>More photos from the evening are in our <a href=\"gallery.php\">gallery</a>. If you attended and would like to be added to our growing Old Students directory, please <a href=\"alumni.php#register\">register here</a>.</p>",
+            . "<p>More photos from the evening are in our <a href=\"/gallery\">gallery</a>. If you attended and would like to be added to our growing Old Students directory, please <a href=\"/alumni#register\">register here</a>.</p>"
+            . "<p>The fundraising continues at a second dinner on <strong>19 September 2026</strong> at the Maple Leaf Hotel, Masaka — see full ticket and payment details on our <a href=\"/events\">Events</a> page.</p>",
         ':cover' => 'assets/photos/dinner/fundraising-group-photo.jpg',
         ':pub' => '2026-08-16 09:00:00',
     ]);
@@ -49,7 +50,7 @@ function seed_database(PDO $db): void
     // Gallery entries for the dinner album, matching assets/photos/dinner/captions.csv
     $dinnerPhotos = [
         ['chairman-isaac-nsereko.jpg', 'Board Chairman Dr. Isaac Nsereko addresses guests during the Old Students\' Diamond Jubilee fundraising dinner.', 'Dr. Isaac Nsereko (Board Chairman)'],
-        ['headteacher-bbale-david.jpg', 'Head Teacher Bbale David — himself a Kakoma old student — speaks at the fundraising dinner.', 'Bbale David (Head Teacher)'],
+        ['headteacher-bbale-david.jpg', 'Head Teacher Bbale David speaks at the fundraising dinner.', 'Bbale David (Head Teacher)'],
         ['old-student-1968-testimony.jpg', 'An old student from the Class of 1968 shares memories of his time at Kakoma S.S.', 'Old Student, Class of 1968'],
         ['fundraising-group-photo.jpg', 'Board members, staff, old students and guests gather for a group photo at the fundraising dinner.', 'Board members, Old Students, Guests'],
         ['jubilee-hall-project-unveiling.jpg', 'Old students unveil the Diamond Jubilee Hall Project board, showing the journey from where the school is to where it wants to be.', 'Old Students'],
@@ -66,7 +67,7 @@ function seed_database(PDO $db): void
             ':caption' => $photo[1],
             ':people' => $photo[2],
             ':date' => '2026-08-15',
-            ':location' => 'Kampala (venue TBC)',
+            ':location' => 'Royal Suites, Bugolobi',
             ':sort' => $i,
         ]);
     }

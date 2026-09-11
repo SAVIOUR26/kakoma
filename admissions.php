@@ -25,7 +25,7 @@ require __DIR__ . '/includes/header.php';
         </p>
         <p class="muted">
             In the meantime, for admissions enquiries please
-            <a href="contact.php">contact the school office</a> directly.
+            <a href="/contact">contact the school office</a> directly.
         </p>
     </div>
 </section>

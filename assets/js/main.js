@@ -17,6 +17,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // --- Hero slideshow ---
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 1) {
+        var activeSlide = 0;
+        setInterval(function () {
+            heroSlides[activeSlide].classList.remove('is-active');
+            activeSlide = (activeSlide + 1) % heroSlides.length;
+            heroSlides[activeSlide].classList.add('is-active');
+        }, 5000);
+    }
+
     // --- Jubilee countdown ---
     var countdownEl = document.getElementById('jubileeCountdown');
     if (countdownEl) {

@@ -4,7 +4,7 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: alumni.php');
+    header('Location: /alumni');
     exit;
 }
 
@@ -17,13 +17,13 @@ $quote = trim($_POST['quote'] ?? '');
 
 if ($fullName === '') {
     flash_set('alumni_error', 'Please tell us your full name to register.');
-    header('Location: alumni.php#register');
+    header('Location: /alumni#register');
     exit;
 }
 
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     flash_set('alumni_error', 'That email address doesn\'t look right — please check and try again.');
-    header('Location: alumni.php#register');
+    header('Location: /alumni#register');
     exit;
 }
 
@@ -42,5 +42,5 @@ $stmt->execute([
 ]);
 
 flash_set('alumni_success', 'Thank you, ' . $fullName . '! Your registration has been received and will appear here once reviewed by the school.');
-header('Location: alumni.php#register');
+header('Location: /alumni#register');
 exit;

@@ -3,7 +3,7 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/includes/functions.php';
 
 $page_title = "Head Teacher's Message";
-$page_description = "A message from Head Teacher Bbale David — a Kakoma old student now leading the school he once studied at.";
+$page_description = "A message from Head Teacher Bbale David as Kakoma Secondary School marks its Diamond Jubilee.";
 $body_class = 'page-headteacher';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -11,7 +11,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-header">
     <div class="container">
         <h1>Head Teacher's Message</h1>
-        <p>From student to headteacher</p>
+        <p>Leading Kakoma into its Diamond Jubilee</p>
     </div>
 </section>
 
@@ -22,29 +22,25 @@ require __DIR__ . '/includes/header.php';
                 <img src="assets/photos/dinner/headteacher-bbale-david.jpg" alt="Bbale David, Head Teacher" style="border-radius:var(--radius); box-shadow:var(--shadow);">
                 <p class="text-center" style="margin-top:12px;">
                     <strong style="color:var(--navy);">Bbale David</strong><br>
-                    <span class="muted">Head Teacher, Kakoma Secondary School</span><br>
-                    <span class="coming-soon-badge" style="margin-top:8px;">Kakoma Old Student</span>
+                    <span class="muted">Head Teacher, Kakoma Secondary School</span>
                 </p>
             </div>
             <div class="prose">
                 <p>
-                    I still remember walking through Kakoma's gates for the first time as a
-                    student, long before I imagined I would one day return to lead this
-                    school. To now serve as Head Teacher — in our Diamond Jubilee year — is
-                    one of the greatest honors of my life.
+                    It is my privilege to serve as Head Teacher of Kakoma Secondary School
+                    as we mark our Diamond Jubilee — sixty years of "Labour for Success."
                 </p>
                 <p>
-                    Kakoma shaped me. The discipline behind our motto, <em>"Labour for
-                    Success,"</em> was not just something we recited — it was something our
-                    teachers modeled for us every day. Standing before old students and
+                    That motto is not just something our students recite — it is something
+                    our teachers model for them every day. Standing before old students and
                     friends at our recent fundraising dinner, hearing their memories and
                     watching their generosity toward the Diamond Jubilee Hall Project, I saw
                     that same spirit alive and well, sixty years on.
                 </p>
                 <p>
                     As we build toward 14 November 2026, my commitment to our students,
-                    parents and staff is simple: to give today's Kakoma students the same
-                    foundation that was given to me — and to keep building on it, so the next
+                    parents and staff is simple: to give today's Kakoma students a strong
+                    foundation for the future — and to keep building on it, so the next
                     sixty years are even stronger than the last.
                 </p>
                 <p>

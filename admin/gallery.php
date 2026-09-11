@@ -43,7 +43,7 @@ function ensure_thumb(string $album, string $filename): void
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM gallery_images WHERE id = :id')->execute([':id' => (int) $_GET['delete']]);
     flash_set('admin_success', 'Photo removed from gallery.');
-    header('Location: gallery.php');
+    header('Location: /admin/gallery');
     exit;
 }
 
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             ':id' => (int) $_POST['id'],
         ]);
     flash_set('admin_success', 'Caption updated.');
-    header('Location: gallery.php');
+    header('Location: /admin/gallery');
     exit;
 }
 
@@ -98,7 +98,7 @@ if (isset($_GET['import'])) {
         }
         flash_set('admin_success', "Imported {$imported} new photo(s) from {$album}/captions.csv.");
     }
-    header('Location: gallery.php');
+    header('Location: /admin/gallery');
     exit;
 }
 
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             }
         }
     }
-    header('Location: gallery.php');
+    header('Location: /admin/gallery');
     exit;
 }
 
@@ -178,7 +178,7 @@ require __DIR__ . '/includes/layout-header.php';
     </p>
     <p class="action-links">
         <?php foreach ($albums as $a): ?>
-            <a href="gallery.php?import=<?= h($a) ?>" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy); margin:0 8px 8px 0; display:inline-block;">Import from <?= h($a) ?>/captions.csv</a>
+            <a href="/admin/gallery?import=<?= h($a) ?>" class="btn btn-outline" style="border-color:var(--navy); color:var(--navy); margin:0 8px 8px 0; display:inline-block;">Import from <?= h($a) ?>/captions.csv</a>
         <?php endforeach; ?>
     </p>
 </div>
@@ -207,7 +207,7 @@ require __DIR__ . '/includes/layout-header.php';
                     </td>
                     <td class="muted" style="font-size:0.82rem;"><?= h($img['people']) ?><br><?= h($img['photo_date']) ?><br><?= h($img['location']) ?></td>
                     <td class="action-links">
-                        <a href="gallery.php?delete=<?= (int) $img['id'] ?>" class="danger" onclick="return confirm('Remove this photo from the gallery?');">Delete</a>
+                        <a href="/admin/gallery?delete=<?= (int) $img['id'] ?>" class="danger" onclick="return confirm('Remove this photo from the gallery?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -30,10 +30,9 @@ define('SOCIAL_YOUTUBE', '');
 define('SOCIAL_WHATSAPP', '');
 
 // --- Brand colors -----------------------------------------------------
-// Sampled from the school crest; confirm exact values against official
-// brand guidelines once supplied.
-define('COLOR_NAVY', '#0A2F5C');
-define('COLOR_NAVY_DARK', '#071F3D');
+// Sampled directly from the school crest graphic's blue ring.
+define('COLOR_NAVY', '#267CC0');
+define('COLOR_NAVY_DARK', '#134062');
 define('COLOR_GOLD', '#D4A017');
 define('COLOR_GOLD_LIGHT', '#F0C93B');
 
@@ -44,18 +43,18 @@ define('DB_PATH', DATA_PATH . '/kakoma.sqlite');
 
 // --- Navigation (Phase 1 = live at launch, Phase 2 = coming soon teasers) ---
 $GLOBALS['NAV_ITEMS'] = [
-    ['label' => 'Home', 'href' => 'index.php'],
-    ['label' => 'Kakoma at 60', 'href' => 'anniversary.php'],
-    ['label' => 'Our History', 'href' => 'history.php'],
-    ['label' => 'Board Message', 'href' => 'board-message.php'],
-    ['label' => "Head Teacher's Message", 'href' => 'headteacher-message.php'],
-    ['label' => 'Old Students', 'href' => 'alumni.php'],
-    ['label' => 'Digital Magazine', 'href' => 'magazine.php'],
-    ['label' => 'Gallery', 'href' => 'gallery.php'],
-    ['label' => 'Blog', 'href' => 'blog.php'],
-    ['label' => 'Events', 'href' => 'events.php'],
-    ['label' => 'E-Learning', 'href' => 'elearning.php'],
-    ['label' => 'Contact', 'href' => 'contact.php'],
+    ['label' => 'Home', 'href' => '/', 'page' => 'index.php'],
+    ['label' => 'Kakoma at 60', 'href' => '/anniversary', 'page' => 'anniversary.php'],
+    ['label' => 'Our History', 'href' => '/history', 'page' => 'history.php'],
+    ['label' => 'Board Message', 'href' => '/board-message', 'page' => 'board-message.php'],
+    ['label' => "Head Teacher's Message", 'href' => '/headteacher-message', 'page' => 'headteacher-message.php'],
+    ['label' => 'Old Students', 'href' => '/alumni', 'page' => 'alumni.php'],
+    ['label' => 'Digital Magazine', 'href' => '/magazine', 'page' => 'magazine.php'],
+    ['label' => 'Gallery', 'href' => '/gallery', 'page' => 'gallery.php'],
+    ['label' => 'Blog', 'href' => '/blog', 'page' => 'blog.php'],
+    ['label' => 'Events', 'href' => '/events', 'page' => 'events.php'],
+    ['label' => 'E-Learning', 'href' => '/elearning', 'page' => 'elearning.php'],
+    ['label' => 'Contact', 'href' => '/contact', 'page' => 'contact.php'],
 ];
 
 date_default_timezone_set('Africa/Kampala');

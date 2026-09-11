@@ -20,7 +20,7 @@ $body_class = $body_class ?? '';
 <meta property="og:title" content="<?= h($page_title) ?> | <?= h(SITE_NAME) ?>">
 <meta property="og:description" content="<?= h($page_description) ?>">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/logo/kakoma-crest.jpg">
+<link rel="icon" href="assets/logo/kakoma-crest.png">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="<?= h($body_class) ?>">

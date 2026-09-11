@@ -66,7 +66,7 @@ follows this convention: drop your photos into the folder, then add/update
 filename,caption,people,date,location
 ```
 
-Then in `/admin/gallery.php`, click **"Import from `<album>`/captions.csv"**.
+Then in `/admin/gallery`, click **"Import from `<album>`/captions.csv"**.
 This creates optimized thumbnails automatically and adds the photos to the
 public gallery — matching photos to captions by filename, never by
 guesswork.
@@ -78,6 +78,9 @@ config.php              Site-wide settings: colors, dates, contact info, nav
 includes/                Shared PHP includes (header, footer, nav, db, helpers)
 database/schema.sql      SQLite schema
 database/seed.php        First-run seed data (dinner post, event, gallery)
+database/migrations.php  One-time content/schema fixups, applied automatically
+                         on every request — safe to deploy on top of a live,
+                         already-seeded site (see comments in the file)
 assets/css/style.css     Public site styles (navy + gold, mobile-first)
 assets/css/admin.css     Admin panel styles
 assets/js/main.js        Mobile nav, countdown, gallery lightbox
@@ -86,6 +89,15 @@ assets/logo/             School crest
 admin/                   Session-protected CMS (see admin/includes/bootstrap.php)
 *.php (root)             One file per public page — see sitemap below
 ```
+
+## Clean URLs
+
+Every page is reachable without its `.php` extension (e.g. `/anniversary`,
+not `/anniversary.php`) via rewrite rules in `.htaccess`. A request for the
+old `.php` URL 301-redirects to the clean one, so old links/bookmarks still
+work. This requires `mod_rewrite` (standard on virtually all shared PHP
+hosting) — if it's ever unavailable, the site still works, just with visible
+`.php` extensions.
 
 ## Sitemap status
 

@@ -6,18 +6,18 @@ $db = get_db();
 
 if (isset($_GET['read'])) {
     $db->prepare('UPDATE contact_messages SET read_flag = 1 WHERE id = :id')->execute([':id' => (int) $_GET['read']]);
-    header('Location: messages.php');
+    header('Location: /admin/messages');
     exit;
 }
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM contact_messages WHERE id = :id')->execute([':id' => (int) $_GET['delete']]);
     flash_set('admin_success', 'Message deleted.');
-    header('Location: messages.php');
+    header('Location: /admin/messages');
     exit;
 }
 if (isset($_GET['delete_interest'])) {
     $db->prepare('DELETE FROM elearning_interest WHERE id = :id')->execute([':id' => (int) $_GET['delete_interest']]);
-    header('Location: messages.php');
+    header('Location: /admin/messages');
     exit;
 }
 
@@ -40,8 +40,8 @@ require __DIR__ . '/includes/layout-header.php';
                     <td style="max-width:320px;"><?= nl2br(h($msg['message'])) ?></td>
                     <td><?= h(format_date($msg['submitted_at'], 'j M Y, g:i a')) ?></td>
                     <td class="action-links">
-                        <?php if (!$msg['read_flag']): ?><a href="messages.php?read=<?= (int) $msg['id'] ?>">Mark Read</a><?php endif; ?>
-                        <a href="messages.php?delete=<?= (int) $msg['id'] ?>" class="danger" onclick="return confirm('Delete this message?');">Delete</a>
+                        <?php if (!$msg['read_flag']): ?><a href="/admin/messages?read=<?= (int) $msg['id'] ?>">Mark Read</a><?php endif; ?>
+                        <a href="/admin/messages?delete=<?= (int) $msg['id'] ?>" class="danger" onclick="return confirm('Delete this message?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -62,7 +62,7 @@ require __DIR__ . '/includes/layout-header.php';
                     <td><?= h($row['phone']) ?></td>
                     <td><?= h(format_date($row['submitted_at'], 'j M Y, g:i a')) ?></td>
                     <td class="action-links">
-                        <a href="messages.php?delete_interest=<?= (int) $row['id'] ?>" class="danger" onclick="return confirm('Delete this entry?');">Delete</a>
+                        <a href="/admin/messages?delete_interest=<?= (int) $row['id'] ?>" class="danger" onclick="return confirm('Delete this entry?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

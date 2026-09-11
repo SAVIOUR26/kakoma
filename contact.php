@@ -25,7 +25,7 @@ $error = flash_get('contact_error');
                 <?php if ($success): ?><div class="alert alert-success"><?= h($success) ?></div><?php endif; ?>
                 <?php if ($error): ?><div class="alert alert-error"><?= h($error) ?></div><?php endif; ?>
 
-                <form action="contact-handler.php" method="post">
+                <form action="/contact-handler" method="post">
                     <div class="field">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>

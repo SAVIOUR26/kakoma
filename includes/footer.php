@@ -3,7 +3,7 @@
 <footer class="site-footer">
     <div class="site-footer__inner">
         <div class="footer-col footer-col--brand">
-            <img src="assets/logo/kakoma-crest.jpg" alt="Kakoma S.S. crest" class="footer-crest">
+            <img src="assets/logo/kakoma-crest.png" alt="Kakoma S.S. crest" class="footer-crest">
             <p class="footer-name"><?= h(SITE_NAME) ?></p>
             <p class="footer-motto">&ldquo;<?= h(SITE_MOTTO) ?>&rdquo;</p>
             <p class="footer-copy">&copy; <?= date('Y') ?> Kakoma Secondary School. Diamond Jubilee 1967&ndash;2026.</p>
@@ -12,11 +12,11 @@
         <div class="footer-col">
             <h4>Explore</h4>
             <ul>
-                <li><a href="anniversary.php">Kakoma at 60</a></li>
-                <li><a href="history.php">Our History</a></li>
-                <li><a href="alumni.php">Old Students</a></li>
-                <li><a href="magazine.php">Digital Magazine</a></li>
-                <li><a href="blog.php">Blog</a></li>
+                <li><a href="/anniversary">Kakoma at 60</a></li>
+                <li><a href="/history">Our History</a></li>
+                <li><a href="/alumni">Old Students</a></li>
+                <li><a href="/magazine">Digital Magazine</a></li>
+                <li><a href="/blog">Blog</a></li>
             </ul>
         </div>
 
@@ -49,9 +49,9 @@
         <div class="footer-col">
             <h4>Coming Soon</h4>
             <ul>
-                <li><a href="elearning.php">E-Learning</a></li>
-                <li><a href="admissions.php">Academics &amp; Admissions</a></li>
-                <li><a href="give.php">Give / Support</a></li>
+                <li><a href="/elearning">E-Learning</a></li>
+                <li><a href="/admissions">Academics &amp; Admissions</a></li>
+                <li><a href="/give">Give / Support</a></li>
             </ul>
         </div>
     </div>
