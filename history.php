@@ -3,7 +3,7 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/includes/functions.php';
 
 $page_title = 'Our History';
-$page_description = "The founding story of Kakoma Secondary School, the Kingdom of Kooki's land gift, our founding families, and the eras that shaped us.";
+$page_description = "The founding story of Kakoma Secondary School, our founding land gift, founding families, and the eras that shaped us.";
 $body_class = 'page-history';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -23,10 +23,10 @@ require __DIR__ . '/includes/header.php';
             will keep growing as more material comes in from the Rakai field research.</em>
         </p>
 
-        <h2>Founded in the Kingdom of Kooki, 1967</h2>
+        <h2>Founded in Rakai District, 1967</h2>
         <p>
             Kakoma Secondary School was established in 1967 in Rakai District, on land
-            gifted through the Kingdom of Kooki — an act of generosity that made education
+            gifted by the local community — an act of generosity that made education
             possible for generations of young people from the surrounding communities and
             beyond. That founding gift remains at the heart of the school's identity: Kakoma
             exists because a community chose to invest its land, and its hope, in the

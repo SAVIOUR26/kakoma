@@ -120,8 +120,8 @@ interest capture), Academics & Admissions, Give/Support.
   until a PDF is placed at `assets/magazine/kakoma-diamond-jubilee-magazine.pdf`
   (or an embed URL is set in `$magazineEmbedUrl` in that file).
 - **History page**: `history.php` includes what's confirmed so far (1967
-  founding, Kingdom of Kooki land gift); expand it once founding-family
-  names and Rakai interview material are compiled.
+  founding, founding land gift); expand it once founding-family names and
+  Rakai interview material are compiled.
 - **Rakai / campus photos**: folders and `captions.csv` templates are ready
   at `assets/photos/rakai/` and `assets/photos/campus/` — add photos and
   captions, then import via the admin Gallery page.
