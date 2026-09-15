@@ -36,7 +36,7 @@ at who's in a photo from the image alone.
 1. **Home** — hero banner, "Kakoma at 60" headline, highlight strip, CTA to digital magazine
 2. **Kakoma at 60** (Anniversary Hub) — countdown/date, dinner highlights + photos,
    60-years timeline, links to print/digital magazine
-3. **Our History** — founding story, the Kingdom of Kooki land gift, founding families,
+3. **Our History** — founding story, the founding land gift, founding families,
    the school's major eras
 4. **Word From the Board** — message from Board Chair/members
 5. **Head Teacher's Message** — note: current HM is an old student — worth foregrounding

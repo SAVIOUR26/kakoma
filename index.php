@@ -31,8 +31,8 @@ require __DIR__ . '/includes/header.php';
         <span class="eyebrow">Diamond Jubilee &middot; 1967 &ndash; 2026</span>
         <h1>Kakoma at 60: Labour for Success</h1>
         <p class="lead">
-            Sixty years of shaping young people from the Kingdom of Kooki and beyond.
-            Join us as Kakoma Secondary School marks its Diamond Jubilee on
+            Sixty years of shaping young people from Rakai District and the
+            surrounding region. Join us as Kakoma Secondary School marks its Diamond Jubilee on
             <?= h(JUBILEE_DATE_LABEL) ?>.
         </p>
 

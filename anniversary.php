@@ -86,8 +86,8 @@ require __DIR__ . '/includes/header.php';
         <div class="timeline">
             <div class="timeline-item">
                 <span class="year">1967</span>
-                <h3>Founded on Land Gifted by the Kingdom of Kooki</h3>
-                <p class="muted">Kakoma Secondary School opens its doors in Rakai District, on land given by the Kingdom of Kooki through the vision of founding families. Read the full story on <a href="/history">Our History</a>.</p>
+                <h3>Founded on Land Gifted by the Local Community</h3>
+                <p class="muted">Kakoma Secondary School opens its doors in Rakai District, on land given through the generosity and vision of founding families. Read the full story on <a href="/history">Our History</a>.</p>
             </div>
             <div class="timeline-item">
                 <span class="year">Decades of Growth</span>
