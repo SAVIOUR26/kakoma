@@ -16,6 +16,12 @@ define('SITE_FOUNDED_YEAR', 1967);
 define('JUBILEE_DATE', '2026-11-14'); // Diamond Jubilee (60th anniversary) date
 define('JUBILEE_DATE_LABEL', '14 November 2026');
 
+// The digital magazine opens to the public only after the Jubilee, once printed
+// copies have been sold at the celebration (Organising Committee, 12 Nov 2026).
+// Change this date/time (Africa/Kampala) to move the launch. Admins can preview it.
+define('MAGAZINE_LAUNCH', '2026-11-15 00:00:00');
+define('MAGAZINE_LAUNCH_LABEL', 'Sunday 15 November 2026');
+
 // --- Contact details (placeholder — confirm with school administration) ---
 define('SCHOOL_ADDRESS', 'Kakoma Secondary School, Rakai District, Uganda');
 define('SCHOOL_PHONE', '+256 000 000 000');

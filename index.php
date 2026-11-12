@@ -4,7 +4,9 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/db.php';
 
 $db = get_db();
-$latestPosts = $db->query('SELECT * FROM posts WHERE published = 1 ORDER BY published_at DESC LIMIT 3')->fetchAll();
+$latestPosts = $db->prepare('SELECT * FROM posts WHERE published = 1 AND published_at <= :now ORDER BY published_at DESC LIMIT 3');
+$latestPosts->execute([':now' => date('Y-m-d H:i:s')]);
+$latestPosts = $latestPosts->fetchAll();
 $nextEvent = $db->query("SELECT * FROM events WHERE status != 'past' ORDER BY event_date ASC LIMIT 1")->fetch();
 
 $page_title = 'Home';
@@ -44,7 +46,7 @@ require __DIR__ . '/includes/header.php';
         </div>
 
         <div class="hero-actions">
-            <a href="/magazine" class="btn btn-gold">Read the Digital Magazine</a>
+            <a href="/magazine" class="btn btn-gold"><?= h(magazine_cta()) ?></a>
             <a href="/anniversary" class="btn btn-outline">Explore Kakoma at 60</a>
         </div>
     </div>
@@ -121,10 +123,10 @@ require __DIR__ . '/includes/header.php';
         <div class="section-header">
             <span class="eyebrow">Digital Magazine</span>
             <h2>Kakoma at Sixty: 32 Pages, One Story</h2>
-            <p class="muted">The Diamond Jubilee magazine tells the Kakoma story: the land and the founding families, ten head teachers, the old students and the journey ahead. Read it online or download it.</p>
-            <a href="/magazine"><img src="assets/magazine/pages/page-01.jpg" alt="Front cover of Kakoma at Sixty" style="max-width:280px;margin:0 auto 24px;box-shadow:var(--shadow);" loading="lazy"></a>
+            <p class="muted">The Diamond Jubilee magazine tells the Kakoma story: the land and the founding families, ten head teachers, the old students and the journey ahead. <?= magazine_is_live() ? 'Read it online or download it.' : 'Printed copies at the Jubilee on ' . h(JUBILEE_DATE_LABEL) . '; online from ' . h(MAGAZINE_LAUNCH_LABEL) . '.' ?></p>
+            <a href="/magazine"><img src="assets/magazine-cover.jpg" alt="Front cover of Kakoma at Sixty" style="max-width:280px;margin:0 auto 24px;box-shadow:var(--shadow);" loading="lazy"></a>
         </div>
-        <a href="/magazine" class="btn btn-gold">Open the Digital Magazine</a>
+        <a href="/magazine" class="btn btn-gold"><?= h(magazine_cta()) ?></a>
     </div>
 </section>
 

@@ -5,8 +5,8 @@ require __DIR__ . '/includes/db.php';
 
 $db = get_db();
 $slug = $_GET['slug'] ?? '';
-$stmt = $db->prepare('SELECT * FROM posts WHERE slug = :slug AND published = 1');
-$stmt->execute([':slug' => $slug]);
+$stmt = $db->prepare('SELECT * FROM posts WHERE slug = :slug AND published = 1 AND (published_at <= :now OR :admin = 1)');
+$stmt->execute([':slug' => $slug, ':now' => date('Y-m-d H:i:s'), ':admin' => is_admin_logged_in() ? 1 : 0]);
 $post = $stmt->fetch();
 
 if (!$post) {

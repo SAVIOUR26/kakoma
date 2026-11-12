@@ -120,7 +120,7 @@ require __DIR__ . '/includes/header.php';
         </p>
         <p class="form-note">
             This history is drawn from &ldquo;Kakoma at Sixty&rdquo;, the Diamond Jubilee magazine
-            (<a href="/magazine">read it online</a>). Some names and dates are still being gathered.
+            (<a href="/magazine">the digital magazine</a>). Some names and dates are still being gathered.
             Have photos, documents or memories to add? <a href="/contact">Get in touch</a>, or
             <a href="/alumni#register">join the Old Students directory</a>.
         </p>
