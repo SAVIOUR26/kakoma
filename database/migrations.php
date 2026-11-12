@@ -207,6 +207,17 @@ function run_migrations(PDO $db): void
                 ':pub' => date('Y-m-d H:i:s'),
             ]);
         },
+
+        // The digital magazine opens after the Jubilee (MAGAZINE_LAUNCH): schedule its
+        // announcement for the launch moment and point its cover at the public copy.
+        '2026_11_12_schedule_digital_magazine_post' => function (PDO $db) {
+            $db->prepare("UPDATE posts SET published_at = :pub, cover_image = 'assets/magazine-cover.jpg',
+                          excerpt = REPLACE(excerpt, 'Read it online or download it.', 'Now online to read or download.')
+                          WHERE slug = 'kakoma-at-sixty-digital-magazine'")
+               ->execute([':pub' => MAGAZINE_LAUNCH]);
+            $db->exec("UPDATE posts SET body = REPLACE(body, 'is now available online.', 'is now available online, following its launch at the Diamond Jubilee celebration on 14 November 2026.')
+                       WHERE slug = 'kakoma-at-sixty-digital-magazine'");
+        },
     ];
 
     foreach ($migrations as $name => $migration) {

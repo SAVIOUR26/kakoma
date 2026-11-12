@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Jubilee countdown ---
     var countdownEl = document.getElementById('jubileeCountdown');
     if (countdownEl) {
-        var targetDate = new Date(countdownEl.dataset.target + 'T00:00:00');
+        var target = countdownEl.dataset.target;
+        var targetDate = new Date(target.indexOf('T') > -1 ? target : target + 'T00:00:00');
         var daysEl = countdownEl.querySelector('[data-unit="days"]');
         var hoursEl = countdownEl.querySelector('[data-unit="hours"]');
         var minsEl = countdownEl.querySelector('[data-unit="minutes"]');

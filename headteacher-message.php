@@ -23,7 +23,7 @@ require __DIR__ . '/includes/header.php';
         <?php render_message($message, false); ?>
         <p class="text-center">
             <a class="btn btn-navy" href="/messages">All Jubilee messages</a>
-            <a class="btn btn-gold" href="/magazine">Read the magazine</a>
+            <a class="btn btn-gold" href="/magazine"><?= h(magazine_cta()) ?></a>
         </p>
     </div>
 </section>

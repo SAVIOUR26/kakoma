@@ -25,7 +25,7 @@ require __DIR__ . '/includes/header.php';
             <?php endforeach; ?>
         </nav>
         <?php foreach ($messages as $m): render_message($m); endforeach; ?>
-        <p class="text-center"><a class="btn btn-gold" href="/magazine">Read the full magazine</a></p>
+        <p class="text-center"><a class="btn btn-gold" href="/magazine"><?= h(magazine_cta()) ?></a></p>
     </div>
 </section>
 

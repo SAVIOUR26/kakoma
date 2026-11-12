@@ -4,7 +4,9 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/db.php';
 
 $db = get_db();
-$posts = $db->query("SELECT * FROM posts WHERE published = 1 ORDER BY published_at DESC")->fetchAll();
+$posts = $db->prepare("SELECT * FROM posts WHERE published = 1 AND published_at <= :now ORDER BY published_at DESC");
+$posts->execute([':now' => date('Y-m-d H:i:s')]);
+$posts = $posts->fetchAll();
 
 $page_title = 'Blog / Recent Activities';
 $page_description = 'Recent activities at Kakoma Secondary School — starting with the Old Students\' fundraising dinner.';

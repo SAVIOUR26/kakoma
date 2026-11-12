@@ -34,7 +34,7 @@ $timeline = [
 
 $page_title = 'Kakoma at 60';
 $page_description = 'The Diamond Jubilee of Kakoma Secondary School, 14 November 2026: the programme, the fundraising dinners, our timeline, the Diamond Hall and the digital magazine.';
-$page_image = 'assets/magazine/pages/page-01.jpg';
+$page_image = 'assets/magazine-cover.jpg';
 $body_class = 'page-anniversary';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -210,9 +210,10 @@ require __DIR__ . '/includes/header.php';
         <span class="eyebrow" style="color:var(--gold-light);">Digital Magazine</span>
         <h2>Kakoma at Sixty: 32 Pages, One Story</h2>
         <p style="max-width:600px;margin:0 auto 20px;color:rgba(255,255,255,0.85);">
-            The Diamond Jubilee magazine, produced by Thirdsan Enterprises for the Organising Committee, is here to read online or download.
+            The Diamond Jubilee magazine, produced by Thirdsan Enterprises for the Organising Committee.
+            <?= magazine_is_live() ? 'Read it online or download it.' : 'Printed copies at the celebration on ' . h(JUBILEE_DATE_LABEL) . '; the digital edition opens here on ' . h(MAGAZINE_LAUNCH_LABEL) . '.' ?>
         </p>
-        <a href="/magazine" class="btn btn-gold">Read the Digital Magazine</a>
+        <a href="/magazine" class="btn btn-gold"><?= h(magazine_cta()) ?></a>
     </div>
 </section>
 

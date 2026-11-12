@@ -98,3 +98,27 @@ function load_captions(string $album): array
     }
     return $captions;
 }
+
+/** True once the digital magazine is open to the public (see MAGAZINE_LAUNCH). */
+function magazine_is_live(): bool
+{
+    return date('Y-m-d H:i:s') >= MAGAZINE_LAUNCH;
+}
+
+/** Public, or previewed by a signed-in admin. */
+function magazine_can_read(): bool
+{
+    return magazine_is_live() || is_admin_logged_in();
+}
+
+/** Launch moment as an ISO date for the countdown script. */
+function magazine_launch_iso(): string
+{
+    return (new DateTime(MAGAZINE_LAUNCH, new DateTimeZone('Africa/Kampala')))->format(DATE_ATOM);
+}
+
+/** Wording for links to the magazine: "Read" once launched, the launch date before. */
+function magazine_cta(): string
+{
+    return magazine_is_live() ? 'Read the Digital Magazine' : 'Digital Magazine: launching ' . MAGAZINE_LAUNCH_LABEL;
+}

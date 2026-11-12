@@ -5,12 +5,16 @@ require __DIR__ . '/includes/functions.php';
 // Digital edition of "Kakoma at Sixty" (32 pages, November 2026).
 // Pages are JPEGs rendered from the final digital PDF, so the reader works on
 // any phone without a PDF plug-in; the PDF itself is offered as a download.
-$magazinePdf = 'assets/magazine/kakoma-diamond-jubilee-magazine.pdf';
+// Both live in assets/magazine/ (closed to direct access) and are served by
+// magazine-file.php, only after MAGAZINE_LAUNCH (see config.php).
+$canRead = magazine_can_read();
+$pdfFile = BASE_PATH . '/assets/magazine/kakoma-diamond-jubilee-magazine.pdf';
+$magazinePdf = 'magazine-file?f=kakoma-diamond-jubilee-magazine.pdf';
 $pageFiles = glob(BASE_PATH . '/assets/magazine/pages/page-*.jpg') ?: [];
 sort($pageFiles);
-$pages = array_map(fn($f) => 'assets/magazine/pages/' . basename($f), $pageFiles);
-$hasPdf = file_exists(BASE_PATH . '/' . $magazinePdf);
-$pdfSizeMb = $hasPdf ? round(filesize(BASE_PATH . '/' . $magazinePdf) / 1048576, 1) : 0;
+$pages = $canRead ? array_map(fn($f) => 'magazine-file?f=' . basename($f), $pageFiles) : [];
+$hasPdf = is_file($pdfFile);
+$pdfSizeMb = $hasPdf ? round(filesize($pdfFile) / 1048576, 1) : 0;
 
 // Where to find each section (page numbers as printed).
 $contents = [
@@ -38,7 +42,7 @@ $contents = [
 
 $page_title = 'Digital Magazine';
 $page_description = 'Read "Kakoma at Sixty", the 32-page Diamond Jubilee magazine of Kakoma Secondary School, online or download it.';
-$page_image = $pages[0] ?? null;
+$page_image = 'assets/magazine-cover.jpg';
 $body_class = 'page-magazine';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -52,7 +56,42 @@ require __DIR__ . '/includes/header.php';
 
 <section>
     <div class="container">
-        <?php if ($pages): ?>
+        <?php if (!$canRead): ?>
+            <div class="grid grid-2" style="align-items:center;max-width:980px;margin:0 auto;">
+                <img src="assets/magazine-cover.jpg" alt="Front cover of Kakoma at Sixty" style="max-width:380px;width:100%;margin:0 auto;box-shadow:var(--shadow);">
+                <div class="text-center">
+                    <span class="coming-soon-badge">Launching <?= h(MAGAZINE_LAUNCH_LABEL) ?></span>
+                    <h2 style="margin-top:14px;">The digital edition opens after the Jubilee</h2>
+                    <p>
+                        &ldquo;Kakoma at Sixty&rdquo; is launched at the Diamond Jubilee celebration on
+                        Saturday <?= h(JUBILEE_DATE_LABEL) ?>, where printed copies are available.
+                        The digital edition opens here on <?= h(MAGAZINE_LAUNCH_LABEL) ?>.
+                    </p>
+                    <div id="jubileeCountdown" class="countdown" data-target="<?= h(magazine_launch_iso()) ?>" style="color:var(--navy);justify-content:center;">
+                        <?php foreach (['days' => 'Days', 'hours' => 'Hours', 'minutes' => 'Minutes', 'seconds' => 'Seconds'] as $unit => $label): ?>
+                            <div class="countdown__unit" style="background:var(--white);border-color:var(--border);">
+                                <span class="countdown__num" data-unit="<?= $unit ?>" style="color:var(--navy);">--</span>
+                                <span class="countdown__label" style="color:var(--ink-soft);"><?= $label ?></span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <p class="form-note">Until the digital magazine opens.</p>
+                    <a class="btn btn-navy" href="/anniversary#programme">See the Jubilee Day programme</a>
+                </div>
+            </div>
+
+            <div class="mag-contents">
+                <h2>In this edition</h2>
+                <ol>
+                    <?php foreach ($contents as $num => $title): ?>
+                        <li><span style="display:flex;gap:12px;padding:9px 4px;"><span class="mag-contents__num"><?= $num ?></span> <?= h($title) ?></span></li>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        <?php elseif ($pages): ?>
+            <?php if (!magazine_is_live()): ?>
+                <p class="alert alert-success text-center">Admin preview: the public sees a countdown until <?= h(MAGAZINE_LAUNCH_LABEL) ?>.</p>
+            <?php endif; ?>
             <div class="mag-reader" id="magReader" data-pages="<?= h(json_encode($pages)) ?>">
                 <div class="mag-stage" id="magStage" aria-live="polite">
                     <a class="mag-page" href="<?= h($pages[0]) ?>"><img src="<?= h($pages[0]) ?>" alt="Front cover of Kakoma at Sixty"></a>
@@ -67,7 +106,7 @@ require __DIR__ . '/includes/header.php';
 
             <div class="mag-actions">
                 <?php if ($hasPdf): ?>
-                    <a class="btn btn-gold" href="<?= h($magazinePdf) ?>" download="Kakoma-at-Sixty-Diamond-Jubilee-Magazine.pdf">Download the PDF (<?= h((string)$pdfSizeMb) ?> MB)</a>
+                    <a class="btn btn-gold" href="<?= h($magazinePdf) ?>">Download the PDF (<?= h((string)$pdfSizeMb) ?> MB)</a>
                 <?php endif; ?>
                 <a class="btn btn-navy" href="https://wa.me/?text=<?= urlencode('Read "Kakoma at Sixty", the Kakoma Secondary School Diamond Jubilee magazine: ' . SITE_URL . '/magazine') ?>" target="_blank" rel="noopener">Share on WhatsApp</a>
             </div>
@@ -109,5 +148,5 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<script src="assets/js/magazine.js" defer></script>
+<?php if ($pages): ?><script src="assets/js/magazine.js" defer></script><?php endif; ?>
 <?php require __DIR__ . '/includes/footer.php'; ?>
