@@ -25,7 +25,10 @@ $body_class = $body_class ?? '';
 <?php endif; ?>
 <link rel="icon" href="assets/logo/kakoma-crest.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/logo/kakoma-crest.png">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css?v=<?= h((string) @filemtime(BASE_PATH . '/assets/css/style.css')) ?>">
 </head>
 <body class="<?= h($body_class) ?>">
 
