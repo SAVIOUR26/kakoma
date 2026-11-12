@@ -54,7 +54,7 @@ require __DIR__ . '/includes/header.php';
         <?php endif; ?>
 
         <p class="text-center muted" style="margin-top:32px;">
-            Full programme details for the Diamond Jubilee celebration will be published here as they're confirmed.
+            See the full Jubilee Day programme on the <a href="/anniversary#programme">Kakoma at 60</a> page.
         </p>
     </div>
 </section>

@@ -1,60 +1,30 @@
 <?php
 require __DIR__ . '/config.php';
 require __DIR__ . '/includes/functions.php';
+require __DIR__ . '/includes/magazine.php';
 
+$message = mag_messages()['headteacher'];
 $page_title = "Head Teacher's Message";
-$page_description = "A message from Head Teacher Bbale David as Kakoma Secondary School marks its Diamond Jubilee.";
+$page_description = "A Diamond Jubilee message from Mr. Bbaale David, Head Teacher of Kakoma Secondary School.";
+$page_image = $message['photo'];
 $body_class = 'page-headteacher';
 require __DIR__ . '/includes/header.php';
 ?>
 
 <section class="page-header">
     <div class="container">
-        <h1>Head Teacher's Message</h1>
-        <p>Leading Kakoma into its Diamond Jubilee</p>
+        <h1><?= h($message['title']) ?></h1>
+        <p>Kakoma Secondary School at sixty</p>
     </div>
 </section>
 
 <section>
     <div class="container">
-        <div class="grid grid-2" style="align-items:start; max-width:900px; margin:0 auto;">
-            <div>
-                <img src="assets/photos/dinner/headteacher-bbale-david.jpg" alt="Bbale David, Head Teacher" style="border-radius:var(--radius); box-shadow:var(--shadow);">
-                <p class="text-center" style="margin-top:12px;">
-                    <strong style="color:var(--navy);">Bbale David</strong><br>
-                    <span class="muted">Head Teacher, Kakoma Secondary School</span>
-                </p>
-            </div>
-            <div class="prose">
-                <p>
-                    It is my privilege to serve as Head Teacher of Kakoma Secondary School
-                    as we mark our Diamond Jubilee — sixty years of "Labour for Success."
-                </p>
-                <p>
-                    That motto is not just something our students recite — it is something
-                    our teachers model for them every day. Standing before old students and
-                    friends at our recent fundraising dinner, hearing their memories and
-                    watching their generosity toward the Diamond Jubilee Hall Project, I saw
-                    that same spirit alive and well, sixty years on.
-                </p>
-                <p>
-                    As we build toward 14 November 2026, my commitment to our students,
-                    parents and staff is simple: to give today's Kakoma students a strong
-                    foundation for the future — and to keep building on it, so the next
-                    sixty years are even stronger than the last.
-                </p>
-                <p>
-                    Thank you for visiting our new website. I invite you to explore our
-                    history, meet our Old Students community, and join us as we celebrate
-                    this milestone together.
-                </p>
-                <p><em>— Bbale David, Head Teacher</em></p>
-                <p class="form-note">
-                    <em>This message will be updated with the Head Teacher's full remarks as
-                    they are provided.</em>
-                </p>
-            </div>
-        </div>
+        <?php render_message($message, false); ?>
+        <p class="text-center">
+            <a class="btn btn-navy" href="/messages">All Jubilee messages</a>
+            <a class="btn btn-gold" href="/magazine">Read the magazine</a>
+        </p>
     </div>
 </section>
 

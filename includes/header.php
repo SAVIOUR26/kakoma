@@ -20,7 +20,11 @@ $body_class = $body_class ?? '';
 <meta property="og:title" content="<?= h($page_title) ?> | <?= h(SITE_NAME) ?>">
 <meta property="og:description" content="<?= h($page_description) ?>">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/logo/kakoma-crest.png">
+<?php if (!empty($page_image)): ?>
+<meta property="og:image" content="<?= h(rtrim(SITE_URL, '/') . '/' . ltrim($page_image, '/')) ?>">
+<?php endif; ?>
+<link rel="icon" href="assets/logo/kakoma-crest.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/logo/kakoma-crest.png">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="<?= h($body_class) ?>">

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="kcshield"><path d="M52 38 Q76 30 100 36 Q124 30 148 38 L148 96 Q146 128 100 153 Q54 128 52 96 Z"/></clipPath>
+    <path id="kcribbon" d="M50 169 Q100 152 150 169"/>
+  </defs>
+  <circle cx="100" cy="100" r="100" fill="#1F63B5"/>
+  <circle cx="100" cy="100" r="94.5" fill="none" stroke="#fff" stroke-width="1.4"/>
+  <circle cx="100" cy="100" r="89" fill="#fff"/>
+  <g clip-path="url(#kcshield)">
+    <rect x="40" y="57" width="120" height="31" fill="#F2C811"/>
+  </g>
+  <g fill="none" stroke="#1A1A1A" stroke-width="2">
+    <path d="M52 38 Q76 30 100 36 Q124 30 148 38 L148 96 Q146 128 100 153 Q54 128 52 96 Z"/>
+    <path d="M52 57 Q100 53 148 57"/>
+    <path d="M52 88 L148 88"/>
+    <path d="M100 88 L100 151"/>
+  </g>
+  <text x="100" y="51.5" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="11.5" letter-spacing=".4" fill="#1A1A1A">KAKOMA  S.S.</text>
+  <!-- open book -->
+  <g stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M100 82 Q88 76 74 79 L79 64 Q91 61 100 67 Z" fill="#F7DC5C"/>
+    <path d="M100 82 Q112 76 126 79 L121 64 Q109 61 100 67 Z" fill="#F7DC5C"/>
+  </g>
+  <g stroke="#1A1A1A" stroke-width=".9" fill="none" opacity=".75">
+    <path d="M83 68 Q90 67 96 70"/><path d="M82 72 Q89 71 96 74"/><path d="M81 76 Q88 75 95 78"/>
+    <path d="M117 68 Q110 67 104 70"/><path d="M118 72 Q111 71 104 74"/><path d="M119 76 Q112 75 105 78"/>
+  </g>
+  <circle cx="100" cy="83" r="1.6" fill="#1A1A1A"/>
+  <!-- lock -->
+  <rect x="74" y="99" width="20" height="23" rx="2.5" fill="#141414"/>
+  <rect x="76.5" y="101.5" width="15" height="3.6" fill="#fff"/>
+  <circle cx="84" cy="113" r="2.6" fill="#fff"/>
+  <path d="M82.6 114 L85.4 114 L84.8 119 L83.2 119 Z" fill="#fff"/>
+  <path d="M81 122 L87 122 L86 129 Q84 131 82 129 Z" fill="#141414"/>
+  <!-- pen -->
+  <g transform="rotate(32 116 118)" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round">
+    <rect x="112.5" y="96" width="7" height="26" rx="3.5" fill="#fff"/>
+    <path d="M112.5 122 L119.5 122 L116 136 Z" fill="#141414"/>
+    <path d="M119.5 100 L122 102 L122 112" fill="none"/>
+  </g>
+  <!-- ribbon -->
+  <path d="M42 158 Q37 168 44 175 L50 174 Q100 157 150 174 L156 175 Q163 168 158 158 L150 157 Q100 140 50 157 Z" fill="#F2C811" stroke="#1A1A1A" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M42 158 Q37 168 44 175 Q48 167 50 157 Z" fill="#E0B400" stroke="#1A1A1A" stroke-width="1.2"/>
+  <path d="M158 158 Q163 168 156 175 Q152 167 150 157 Z" fill="#E0B400" stroke="#1A1A1A" stroke-width="1.2"/>
+  <text font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="8.3" letter-spacing=".2" word-spacing="2.2" fill="#1A1A1A"><textPath href="#kcribbon" startOffset="50%" text-anchor="middle">LABOUR FOR SUCCESS</textPath></text>
+</svg>

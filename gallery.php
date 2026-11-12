@@ -4,18 +4,18 @@ require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/db.php';
 
 $db = get_db();
-$images = $db->query("SELECT * FROM gallery_images ORDER BY album ASC, sort_order ASC")->fetchAll();
+$images = $db->query("SELECT * FROM gallery_images ORDER BY CASE album WHEN 'campus' THEN 1 WHEN 'dinner' THEN 2 WHEN 'archive' THEN 3 ELSE 4 END, sort_order ASC")->fetchAll();
 
 $albumLabels = [
-    'dinner' => "Old Students' Dinner",
+    'dinner' => 'Fundraising Dinners',
     'rakai' => 'Rakai Field Trip',
-    'campus' => 'Campus',
+    'campus' => 'School & Campus',
     'archive' => 'Historical Archive',
 ];
 $albumsPresent = array_unique(array_column($images, 'album'));
 
 $page_title = 'Gallery';
-$page_description = 'Photos from the Old Students\' fundraising dinner, the Rakai field trip, our campus, and historical archives.';
+$page_description = 'Photos of Kakoma Secondary School today, the Diamond Jubilee fundraising dinners and the school\'s historical archive.';
 $body_class = 'page-gallery';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -23,7 +23,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-header">
     <div class="container">
         <h1>Gallery</h1>
-        <p>Dinner &middot; Rakai Field Trip &middot; Campus &middot; Archive</p>
+        <p>School &amp; campus &middot; Fundraising dinners &middot; Historical archive</p>
     </div>
 </section>
 
