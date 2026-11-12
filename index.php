@@ -56,7 +56,7 @@ require __DIR__ . '/includes/header.php';
             <div class="highlight-item"><span class="num">60</span><span class="label">Years of Labour for Success</span></div>
             <div class="highlight-item"><span class="num">1967</span><span class="label">Founded in Rakai District</span></div>
             <div class="highlight-item"><span class="num">1000s</span><span class="label">Old Students Worldwide</span></div>
-            <div class="highlight-item"><span class="num">1</span><span class="label">Jubilee Hall Being Built</span></div>
+            <div class="highlight-item"><span class="num">1</span><span class="label">Diamond Hall Planned</span></div>
         </div>
     </div>
 </section>
@@ -66,13 +66,15 @@ require __DIR__ . '/includes/header.php';
         <div class="section-header">
             <span class="eyebrow">Leading Into the Diamond Jubilee</span>
             <h2>A Message From Our Head Teacher</h2>
-            <p class="muted">Head Teacher Bbale David shares his vision for Kakoma Secondary School as we mark 60 years of Labour for Success.</p>
+            <p class="muted">Mr. Bbaale David, Head Teacher, writes to the Kakoma family as the school marks sixty years of Labour for Success.</p>
         </div>
         <div class="grid grid-2" style="align-items:center;">
-            <img src="assets/photos/dinner/headteacher-bbale-david.jpg" alt="Head Teacher Bbale David speaking at the Diamond Jubilee celebration" style="border-radius:var(--radius); box-shadow:var(--shadow);">
+            <img src="assets/photos/people/headteacher-bbaale-david.jpg" alt="Mr. Bbaale David, Head Teacher" style="border-radius:var(--radius); box-shadow:var(--shadow);">
             <div>
-                <p>From steady academic leadership to the momentum behind the Diamond Jubilee Hall Project, read the Head Teacher's message to the Kakoma family as we mark 60 years.</p>
+                <p class="pull-quote">Labour for Success is not only our motto; it is our daily practice.</p>
+                <p>Read the Head Teacher&rsquo;s message, and the Jubilee messages from HRH the Kamuswaga of Kooki, the Bishop of West Buganda Diocese, the Board Chairman and the Organising Committee.</p>
                 <a href="/headteacher-message" class="btn btn-navy">Read the Head Teacher's Message</a>
+                <a href="/messages" class="btn btn-gold">All Jubilee Messages</a>
             </div>
         </div>
     </div>
@@ -118,8 +120,9 @@ require __DIR__ . '/includes/header.php';
     <div class="container text-center">
         <div class="section-header">
             <span class="eyebrow">Digital Magazine</span>
-            <h2>60 Pages Marking 60 Years</h2>
-            <p class="muted">Our Diamond Jubilee magazine — print and digital editions — tells the Kakoma story in full. Read it online, anytime, anywhere.</p>
+            <h2>Kakoma at Sixty: 32 Pages, One Story</h2>
+            <p class="muted">The Diamond Jubilee magazine tells the Kakoma story: the land and the founding families, ten head teachers, the old students and the journey ahead. Read it online or download it.</p>
+            <a href="/magazine"><img src="assets/magazine/pages/page-01.jpg" alt="Front cover of Kakoma at Sixty" style="max-width:280px;margin:0 auto 24px;box-shadow:var(--shadow);" loading="lazy"></a>
         </div>
         <a href="/magazine" class="btn btn-gold">Open the Digital Magazine</a>
     </div>

@@ -3,7 +3,7 @@
 <footer class="site-footer">
     <div class="site-footer__inner">
         <div class="footer-col footer-col--brand">
-            <img src="assets/logo/kakoma-crest.png" alt="Kakoma S.S. crest" class="footer-crest">
+            <img src="assets/logo/kakoma-crest.svg" alt="Kakoma S.S. crest" class="footer-crest">
             <p class="footer-name"><?= h(SITE_NAME) ?></p>
             <p class="footer-motto">&ldquo;<?= h(SITE_MOTTO) ?>&rdquo;</p>
             <p class="footer-copy">&copy; <?= date('Y') ?> Kakoma Secondary School. Diamond Jubilee 1967&ndash;2026.</p>

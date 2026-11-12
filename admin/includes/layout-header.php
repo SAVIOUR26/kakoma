@@ -8,7 +8,8 @@ $active = $active ?? '';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= h($page_title ?? 'Admin') ?> | Kakoma Admin</title>
-<link rel="icon" href="../assets/logo/kakoma-crest.png">
+<link rel="icon" href="../assets/logo/kakoma-crest.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/logo/kakoma-crest.png">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
@@ -16,7 +17,7 @@ $active = $active ?? '';
 <div class="admin-shell">
     <aside class="admin-sidebar">
         <div class="brand">
-            <img src="../assets/logo/kakoma-crest.png" alt="Kakoma crest">
+            <img src="../assets/logo/kakoma-crest.svg" alt="Kakoma crest">
             <span>Kakoma Admin</span>
         </div>
         <nav>

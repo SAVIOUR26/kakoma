@@ -32,14 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Login | Kakoma S.S.</title>
-<link rel="icon" href="../assets/logo/kakoma-crest.png">
+<link rel="icon" href="../assets/logo/kakoma-crest.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/logo/kakoma-crest.png">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body class="admin-body">
 <div class="login-wrap">
     <div class="login-box">
-        <img src="../assets/logo/kakoma-crest.png" alt="Kakoma crest">
+        <img src="../assets/logo/kakoma-crest.svg" alt="Kakoma crest">
         <h2 class="mt-0">Kakoma Admin</h2>
         <p class="muted">Sign in to manage site content.</p>
         <?php if ($error): ?><div class="alert alert-error"><?= h($error) ?></div><?php endif; ?>

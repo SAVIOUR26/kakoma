@@ -2,7 +2,7 @@
 <header class="site-header">
     <div class="site-header__inner">
         <a href="/" class="brand">
-            <img src="assets/logo/kakoma-crest.png" alt="Kakoma S.S. crest" class="brand__crest">
+            <img src="assets/logo/kakoma-crest.svg" alt="Kakoma S.S. crest" class="brand__crest">
             <span class="brand__text">
                 <span class="brand__name">Kakoma Secondary School</span>
                 <span class="brand__motto"><?= h(SITE_MOTTO) ?></span>
