@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggle.addEventListener('click', function () {
             var isOpen = nav.classList.toggle('is-open');
             toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
         });
         nav.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
@@ -17,15 +18,76 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Hero slideshow ---
+    // --- "More" menu (desktop) ---
+    var more = document.getElementById('navMore');
+    if (more) {
+        var moreBtn = more.querySelector('.nav-more__toggle');
+        moreBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = more.classList.toggle('is-open');
+            moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', function (e) {
+            if (!more.contains(e.target)) { more.classList.remove('is-open'); moreBtn.setAttribute('aria-expanded', 'false'); }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { more.classList.remove('is-open'); moreBtn.setAttribute('aria-expanded', 'false'); }
+        });
+    }
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- Hero slideshow (photos load one ahead, small files on phones) ---
     var heroSlides = document.querySelectorAll('.hero-slide');
     if (heroSlides.length > 1) {
+        var small = window.innerWidth < 900;
+        var caption = document.getElementById('heroCaption');
+        var dots = document.querySelectorAll('#heroDots button');
         var activeSlide = 0;
-        setInterval(function () {
+        var timer = null;
+        var load = function (i) {
+            var el = heroSlides[i];
+            if (el && !el.dataset.loaded) {
+                el.style.backgroundImage = "url('" + (small ? el.dataset.srcSmall : el.dataset.src) + "')";
+                el.dataset.loaded = '1';
+            }
+        };
+        heroSlides[0].dataset.loaded = '1';
+        load(1);
+        var show = function (i) {
             heroSlides[activeSlide].classList.remove('is-active');
-            activeSlide = (activeSlide + 1) % heroSlides.length;
+            if (dots[activeSlide]) dots[activeSlide].classList.remove('is-active');
+            activeSlide = (i + heroSlides.length) % heroSlides.length;
+            load(activeSlide);
             heroSlides[activeSlide].classList.add('is-active');
-        }, 5000);
+            if (dots[activeSlide]) dots[activeSlide].classList.add('is-active');
+            if (caption) {
+                caption.style.opacity = 0;
+                setTimeout(function () { caption.textContent = heroSlides[activeSlide].dataset.caption; caption.style.opacity = 1; }, 400);
+            }
+            load(activeSlide + 1);
+        };
+        var start = function () { clearInterval(timer); timer = setInterval(function () { show(activeSlide + 1); }, 6500); };
+        dots.forEach(function (dot, i) { dot.addEventListener('click', function () { show(i); start(); }); });
+        start();
+    }
+
+    // --- Jubilee confetti in the hero ---
+    var confetti = document.getElementById('heroConfetti');
+    if (confetti && !reduceMotion) {
+        var colours = ['#F0C93B', '#D4A017', '#F6DE8D', '#FFFFFF', '#4095D9', '#FFF3C4'];
+        var shapes = ['', 'is-round', 'is-diamond'];
+        var count = window.innerWidth < 600 ? 16 : 30;
+        for (var c = 0; c < count; c++) {
+            var piece = document.createElement('span');
+            piece.className = 'confetti-piece ' + shapes[c % shapes.length];
+            piece.style.left = (Math.random() * 100) + '%';
+            piece.style.background = colours[c % colours.length];
+            piece.style.animationDuration = (9 + Math.random() * 9) + 's';
+            piece.style.animationDelay = (-Math.random() * 18) + 's';
+            piece.style.opacity = (0.55 + Math.random() * 0.4).toFixed(2);
+            confetti.appendChild(piece);
+        }
     }
 
     // --- Jubilee countdown ---

@@ -49,17 +49,18 @@ define('DB_PATH', DATA_PATH . '/kakoma.sqlite');
 
 // --- Navigation (Phase 1 = live at launch, Phase 2 = coming soon teasers) ---
 $GLOBALS['NAV_ITEMS'] = [
+    // 'group' => 'more' puts an item in the "More" menu on desktop; 'cta' shows it as the gold button.
     ['label' => 'Home', 'href' => '/', 'page' => 'index.php'],
     ['label' => 'Kakoma at 60', 'href' => '/anniversary', 'page' => 'anniversary.php'],
     ['label' => 'Our History', 'href' => '/history', 'page' => 'history.php'],
     ['label' => 'Messages', 'href' => '/messages', 'page' => 'messages.php'],
     ['label' => 'Old Students', 'href' => '/alumni', 'page' => 'alumni.php'],
-    ['label' => 'Digital Magazine', 'href' => '/magazine', 'page' => 'magazine.php'],
     ['label' => 'Gallery', 'href' => '/gallery', 'page' => 'gallery.php'],
-    ['label' => 'Blog', 'href' => '/blog', 'page' => 'blog.php'],
     ['label' => 'Events', 'href' => '/events', 'page' => 'events.php'],
-    ['label' => 'E-Learning', 'href' => '/elearning', 'page' => 'elearning.php'],
-    ['label' => 'Contact', 'href' => '/contact', 'page' => 'contact.php'],
+    ['label' => 'Blog', 'href' => '/blog', 'page' => 'blog.php', 'group' => 'more'],
+    ['label' => 'E-Learning', 'href' => '/elearning', 'page' => 'elearning.php', 'group' => 'more'],
+    ['label' => 'Contact', 'href' => '/contact', 'page' => 'contact.php', 'group' => 'more'],
+    ['label' => 'Magazine', 'href' => '/magazine', 'page' => 'magazine.php', 'cta' => true],
 ];
 
 date_default_timezone_set('Africa/Kampala');

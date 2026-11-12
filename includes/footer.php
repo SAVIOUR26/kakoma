@@ -60,6 +60,6 @@
     </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=<?= h((string) @filemtime(BASE_PATH . "/assets/js/main.js")) ?>"></script>
 </body>
 </html>
